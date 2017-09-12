@@ -1,4 +1,4 @@
-'''pipeline {
+pipeline {
 
  agent any
 
@@ -10,7 +10,7 @@
 
  }
 
- 
+
 
  stages {
 
@@ -24,33 +24,34 @@
 
    }
 
-   stage('testing') {
-
-     steps {
-
-       sh '''rails test'''
-
-     }
-
-   }
+  
 
    stage('build docker') {
 
      steps {
 
-       sh 'docker build -t sahaya/popcorn:$BUILD_NUMBER .'
+       sh 'docker build -t gpandeya/popcorn:$BUILD_NUMBER .'
 
      }
 
    }
 
+ stage('testing') {
+
+     steps {
+
+       sh 'docker build -t gpandeya/popcorn:$BUILD_NUMBER rails test'
+
+     }
+
+   }
    stage('docker push') {
 
      steps {
 
-       sh '''docker login -u sahaya -p $DOCKER_PASSWORD
+       sh '''docker login -u gpandeya -p $DOCKER_PASSWORD
 
-docker push sahaya/popcorn:$BUILD_NUMBER'''
+      docker push gpandeya/popcorn:$BUILD_NUMBER'''
 
      }
 
