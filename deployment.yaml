@@ -51,7 +51,7 @@ spec:
 
      - name: web
 
-       image: gpandeya/popcorn:18
+       image: gpandeya/popcorn:$BUILD_NUMBER
 
        ports:
 
