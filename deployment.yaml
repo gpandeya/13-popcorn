@@ -1,10 +1,16 @@
 apiVersion: apps/v1beta1 
 kind: Deployment
-metadata:  name: 
-d-web spec:  
-replicas: 5  
-template:    
-metadata:      
-labels:       
-web: rails   
-spec:      containers:      - name: web        image: gpandeya/popcorn:7        ports:        - containerPort: 3333
+metadata:  
+    name: d-web 
+spec:  
+    replicas: 5  
+    template:    
+    metadata:      
+        labels:       
+            web: rails   
+    spec:      
+    containers:      
+        - name: web       
+        image: gpandeya/popcorn:7       
+        ports:        
+            - containerPort: 3333
