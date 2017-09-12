@@ -11,6 +11,11 @@ pipeline {
         sh 'echo "hello world!"'
       }
     }
+    stage('testing') {
+      steps {
+        sh ''' rails test
+      }
+    }
     stage('build docker') {
       steps {
         sh 'docker build -t gpandeya/popcorn:$BUILD_NUMBER .'
