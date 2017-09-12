@@ -11,7 +11,7 @@ spec:
             web: rails   
     spec:      
         containers:      
-            - name: web       
-            image: gpandeya/popcorn:7       
+        - name: web       
+        image: gpandeya/popcorn:7       
         ports:        
-            - containerPort: 3333
+        - containerPort: 3333
