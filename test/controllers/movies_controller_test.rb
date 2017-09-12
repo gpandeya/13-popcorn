@@ -15,7 +15,7 @@ class MoviesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create movie" do
+  test "should create movie" do test
     assert_difference('Movie.count') do
       post movies_url, params: { movie: { name: @movie.name, released: @movie.released } }
     end
