@@ -2,36 +2,23 @@ pipeline {
 
  agent any
 
- 
-
  environment {
-
    DOCKER_PASSWORD = credentials ('DOCKER_PASSWORD')
-
  }
 
-
-
  stages {
-
-   stage('greetings') {
-
+ 
+   stage('greetings'){
      steps {
-
        sh 'echo "hello work"'
-
      }
-
    }
 
-  
+   stage('build docker'){
 
-   stage('build docker') {
-
-     steps {
+     steps{
 
        sh 'docker build -t gpandeya/popcorn:$BUILD_NUMBER .'
-
      }
 
    }
@@ -40,7 +27,7 @@ pipeline {
 
      steps {
 
-       sh 'docker build -t gpandeya/popcorn:$BUILD_NUMBER rails test'
+       sh 'docker run gpandeya/popcorn:$BUILD_NUMBER rails test'
 
      }
 
